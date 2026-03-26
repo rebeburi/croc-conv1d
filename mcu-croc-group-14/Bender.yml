@@ -82,11 +82,10 @@ vendor_package:
   # TODO: Write the vendor_package of the conv1d_accel, taking inspiration from the simple_cnt vendor_package
   # Conv1d
 
-  # Conv1d Accelerator (Group 14)
+  # Conv1d Accelerator (Group 14) ### CHANGE IT TO YOUR TOKEN AND USERNAME
   - name: conv1d_accel
     target_dir: rtl/user_domain/conv1d
-    upstream: { git: "https://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@github.com/Integrated-Systems-Architecture/conv-1d-group-14.git", rev: "410a96f85e0f5abfcde7f68ec9708d92d6b7bc7b" }
-    mapping:
+    upstream: { git: "https://<USERNAME>:${{ secrets.CONV1D_TOKEN }}@github.com/Integrated-Systems-Architecture/conv-1d-group-14.git", rev: "410a96f85e0f5abfcde7f68ec9708d92d6b7bc7b" }
       - { from: 'hw/',        to: 'hw/'                             }
       - { from: 'sw/',        to: '../../../sw/control_reg/conv1d/' }
       - { from: 'Bender.yml', to: 'Bender.yml'                      }
