@@ -1,0 +1,113 @@
+{
+    name: "conv1d_control",
+    clock_primary: "clk_i",
+    reset_primary: "rst_ni",
+    bus_interfaces: [
+        {
+            protocol: "reg_iface",
+            direction: "device",
+        },
+    ],
+    regwidth: "32",
+    registers: [
+        {
+            name: "CONTROL",
+            desc: "Accelerator main control configuration",
+            fields: [
+                {
+                    bits: "0",
+                    name: "START",
+                    desc: "Start bit. Set to 1 to start convolution.",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                },
+                {
+                    bits: "7:1",
+                    name: "TILE_SIZE",
+                    desc: "Output tile size (Number of time steps to process)",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                },
+                {
+                    bits: "13:8",
+                    name: "INPUT_CH",
+                    desc: "Number of input channels",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                },
+                {
+                    bits: "17:14",
+                    name: "KERNEL_LEN",
+                    desc: "Length of the kernel (K)",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                }
+            ],
+            swaccess: "rw",
+            hwaccess: "hro",
+            resval: "0"
+        },
+        {
+            name: "POINTERS",
+            desc: "Memory Buffer Start Addresses (Word Indices 0-127)",
+            fields: [
+                {
+                    bits: "6:0",
+                    name: "INPUT_PTR",
+                    desc: "Start address of Input buffer (Word Index 0-127)",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                },
+                {
+                    bits: "14:8",
+                    name: "WEIGHT_PTR",
+                    desc: "Start address of Weight buffer (Word Index 0-127)",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                },
+                {
+                    bits: "22:16",
+                    name: "OUTPUT_PTR",
+                    desc: "Start address of Output buffer (Word Index 0-127)",
+                    swaccess: "rw",
+                    hwaccess: "hro",
+                    resval: "0"
+                }
+            ],
+            swaccess: "rw",
+            hwaccess: "hro",
+            resval: "0"
+        },
+        {
+            name: "STATUS",
+            desc: "Accelerator status register",
+            fields: [
+                {
+                    bits: "0",
+                    name: "RUNNING",  
+                    desc: "This bit is set to 1 when the accelerator is running.",
+                    swaccess: "rw",
+                    hwaccess: "hrw",
+                    resval: "0"
+                },
+                {
+                    bits: "1",
+                    name: "DONE",
+                    desc: "This bit is set to 1 when the accelerator has finished.",
+                    swaccess: "rw",
+                    hwaccess: "hrw",
+                    resval: "0"
+                }
+            ],
+            swaccess: "rw",
+            hwaccess: "hrw",
+            resval: "0"
+        }
+    ],
+}

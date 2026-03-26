@@ -1,0 +1,14 @@
+.bender
+tmp
+openroad/
+*.def
+*.odb
+*.gds
+*.lef
+*.lib
+*.vcd
+*.log
+*.zip
+build/
+results/
+reports/
